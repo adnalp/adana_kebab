@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Schriftart "Noto Sans Display" von Google Fonts importieren: eine Schriftart zu nutzen, die nicht von allen genutzt wird, macht die Website besonders -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/style.css">
+        <!-- Icon: wird im Browser ganz klein beim Tab angezeigt -->
+        <link rel="icon" type="image/png" href="img/logo.png">
+        <title>Adana-entdecken.de: Erfahren Sie mehr über den Adana Kebab - Geschichte, Rezeptur & mehr</title>
+    </head>
+    <body>
+        <!-- Header Menü mit Logo, Search Bar und Links -->
+        <header>
+            <a href="index.html"><img src="img/logo.png" class="logo"></a>
+
+            <!-- Search Bar: Textbox und Suchbutton -->
+            <div class="search fast-transition">
+                <input type="text" placeholder="Seiten durchsuchen..." autocomplete="off" class="no-border left-round-edges fast-transition">
+                <button type="submit" class="no-border right-round-edges fast-transition">
+                    <img src="img/search.png" width="60%" class="fast-transition">
+                </button>
+            </div>
+
+            <!-- Links -->
+            <ul>
+                <li><a href="seiten/rezeptur-adana-kebab.html" target="_blank">Rezeptur</a></li>
+                <li><a href="seiten/geschichte-des-kebabs.html" target="_blank">Geschichte des Kebabs</a></li>
+                <li><a href="seiten/kebab-in-ganz-deutschland.html" target="_blank">Kebab in ganz Deutschland</a></li>
+            </ul>
+        </header>
+
+        <!-- Beginn des Hauptinhaltes -->
+        <!-- Willkommenstext -->
+        <span class="welcome-text">Adana-entdecken.de</span>
+
+        <!-- Slideshow Adana Kebab mit Geschichte -->
+        <div class="special-container">
+            <div class="slideshow left-round-edges right-round-edges">
+                <div class="slides">
+                    <input type="radio" name="r" id="r1" checked>
+                    <input type="radio" name="r" id="r2">
+                    <input type="radio" name="r" id="r3">
+                    <input type="radio" name="r" id="r4">
+                    <input type="radio" name="r" id="r5">
+
+                    <div class="slide s1"><img src="img/adana-kebab-auf-grill.jpeg" alt="Adana Kebab auf Brot"></div>
+                    <div class="slide"><img src="img/adana-kebab-auf-brot.jpeg" alt="Adana Kebab auf Grill"></div>
+                    <div class="slide"><img src="img/adana-kebab-auf-grill.jpeg" alt="Adana Kebab auf Grill"></div>
+                    <div class="slide"><img src="img/adana-kebab-auf-grill.jpeg" alt="Adana Kebab auf Grill"></div>
+                    <div class="slide"><img src="img/adana-kebab-auf-grill.jpeg" alt="Adana Kebab auf Grill"></div>
+                </div>
+
+                <div class="navigation">
+                    <label for="r1" class="bar left-round-edges right-round-edges"></label>
+                    <label for="r2" class="bar left-round-edges right-round-edges"></label>
+                    <label for="r3" class="bar left-round-edges right-round-edges"></label>
+                    <label for="r4" class="bar left-round-edges right-round-edges"></label>
+                    <label for="r5" class="bar left-round-edges right-round-edges"></label>
+                </div>
+            </div>
+
+            <!-- Kebab Infobox mit Button zur Geschichte -->
+            <div class="info-box shadow-container left-round-edges right-round-edges">
+                <div class="info-box-text">
+                    <h3>Über Adana Kebab</h3>
+                    <p>Der Adana Kebab stammt aus der türkischen Provinz Adana und gehört seit vielen hunderten Jahren zur vielfältigen türkischen Küche.</p>
+                    <p>Um den Kebab näher kennenzulernen und um zu verstehen, was er ist, müssen wir wissen, wo <b>der Begriff „Kebab“</b> herkommt und was er bedeutet.</p>
+                    <p>Das Gericht Adana Kebab ist ein Hackfleischspieß, der...</p>
+                </div>
+                <a class="more-info-button left-round-edges right-round-edges fast-transition" href="seiten/geschichte-des-kebabs.html">Mehr erfahren</a>
+            </div>
+        </div>
+
+        <!-- 3 Infoboxen: Wo essen, Rezeptur, Adana Online -->
+        <h2>Adana entdecken</h2>
+        <div class="container">
+            <!-- Wo Kebab essen -->
+            <div class="info-box shadow-container left-round-edges right-round-edges">
+                <img class="left-round-edges right-round-edges" src="img/tuerkisches-restaurant.jpg" alt="Türkisches Restaurant türkische Flagge">
+                <div class="info-box-text">
+                    <h4>Wo kann man Kebab essen?</h4>
+                    <p>Möchten Sie Adana Kebab kosten? Falls Sie nicht wissen, wo sie den besten Kebab finden: Wir haben für Sie eine Liste der beliebtesten Kebabläden in den größten deutschen Städten erstellt.</p>
+                </div>
+                <a class="more-info-button left-round-edges right-round-edges fast-transition" href="seiten/kebab-in-ganz-deutschland.html">Restaurants ansehen</a>
+            </div>
+
+            <!-- Kebab Rezept -->
+            <div class="info-box shadow-container left-round-edges right-round-edges">
+                <img class="left-round-edges right-round-edges" src="img/adana-rezept.jpg" alt="Adana Kebab Rezept">
+                <div class="info-box-text">
+                    <h4>Kebab Rezept</h4>
+                    <p>Möchten Sie zuhause einen leckeren Adana Kebab zubereiten? Das geht! Sie brauchen gewöhnliche Zutaten, die Sie in jedem Supermarkt finden. Haben Sie alles? Dann können Sie zum Abendessen ein leckeres Gericht machen!</p>
+                </div>
+                <a class="more-info-button left-round-edges right-round-edges fast-transition" href="seiten/rezeptur-adana-kebab.html">Rezept ansehen</a>
+            </div>
+
+            <!-- Online Adana -->
+            <div class="info-box shadow-container left-round-edges right-round-edges">
+                <img class="left-round-edges right-round-edges" src="img/online-adana.jpg" alt="Adana Kebab online zubereiten">
+                <div class="info-box-text">
+                    <h4>Adana online zubereiten</h4>
+                    <p>Das Hackfleisch lang ausrollen, das leckere Brot zubereiten... Lernen Sie den Adnan Kebab besser kennen, indem Sie mit unserem „Online Adana Kebab“-Tool experimentieren und Spaß haben!</p>
+                </div>
+                <a class="more-info-button left-round-edges right-round-edges fast-transition" href="seiten/adana-online-zubereiten.html">Zum Online-Küchentisch</a>
+            </div>
+        </div>
+
+        <!-- Footer mit wichtigen Links und Infos -->
+        <footer>
+            <!-- Links -->
+            <ul>
+                <li><a href="seiten/kontakt.html">Kontakt</a></li>
+                <li><a href="seiten/impressum.html">Impressum</a></li>
+                <li><a href="seiten/datenschutz.html">Datenschutz</a></li>
+            </ul>
+            <!-- Design & Copyright -->
+            <div>
+                <span>&copy; 2021, Adana-entdecken.de</span>
+                <img src="img/design.png">
+                <span>Website Design by Alper & Kaya</span>
+            </div>
+        </footer>
+    </body>
+</html>

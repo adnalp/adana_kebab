@@ -1,0 +1,703 @@
+:root {
+    /* Farben, die wir festgelegt haben. Wir haben sie als Variablen gespeichert, damit wir überall auf sie zugreifen können und sie nur einmal ändern müssen, wenn nötig. */
+    --text-color: #343a40;
+    --bg-color: #fbf2c0;
+    --accent-color: #aa0000;
+}
+
+html {
+    /* Wenn der Nutzer auf Links innerhalb der Seite klickt, bewegt sich die Seite langsam und springt nicht direkt: Besseres Nutzererlebnis */
+    scroll-behavior: smooth;
+}
+
+/* GENERELLE EINSTELLUNGEN - BEGINN */
+
+body {
+    /* Damit unnötige Lücken vermieden werden und alles unter unserer Kontrolle ist. */
+    margin: 0;
+    padding: 0;
+
+    /* Sicherstellen, dass body die ganze Seite einnimmt, damit Hintergrundfarben etc. richtig angezeigt werden. */
+    min-height: 100vh;
+
+    /* Wiedererkennungsmerkmale unserer Website: Schriftart und Farben */
+    font-family: "Noto Sans Display", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+input {
+    /* nur für input-Tags nochmal geschrieben, weil es aus irgendeinem Grund nicht anders ging */
+    font-family: "Noto Sans Display", sans-serif;
+    font-size: 15px;
+}
+
+hr {
+    border: none;
+    outline: currentColor solid 1px;
+    width: 90%;
+    color: currentColor;
+
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    /* Andere Schriftart und Farbe für Überschriften */
+    font-family: cursive;
+    color: var(--accent-color);
+    text-align: center;
+}
+
+h1::before,
+h2::before,
+h3::before,
+h4::before {
+    /* Bei Titeln langer Strich, damit sie herausstechen */
+    content: "–––––– ";
+}
+
+h1::after,
+h2::after,
+h3::after,
+h4::after {
+    /* Bei Titeln langer Strich, damit sie herausstechen */
+    content: " ––––––";
+}
+
+header,
+footer {
+    /* Macht alle Buchstaben groß, die im header (oberes Menü) und footer sind */
+    text-transform: uppercase;
+
+    /* Unterscheidung zwischen Hauptinhalt und Header/Footer durch Farbwechsel */
+    background-color: var(--text-color);
+    color: var(--bg-color);
+
+    /* Höhe = 15% der Bildschirmhöhe des Nutzers */
+    height: 15vh;
+
+    /* Die ganze Bildschirmbreite soll genutzt werden */
+    width: 100%;
+}
+
+.fullscreen {
+    /* wenn der Inhalt zu wenig ist, wird der Footer mitten in der Seite platziert. Um das zu vermeiden, wird dieser Class Seiten mit wenig Inhalt hinzugefügt, damit der Footer ans Ende der Seite geht. */
+    min-height: 75vh;
+}
+
+.fast-transition {
+    /* Weichere Vorgänge bei Hover-Effekten usw. Außer bei border, weil es komisch aussieht */
+    transition: all 200ms, border 0ms;
+}
+
+.no-border {
+    /* Löschung der störenden Ränder bei Textboxen */
+    border: none;
+    outline: none;
+}
+
+.left-round-edges {
+    /* für Textbox */
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.right-round-edges {
+    /* für Suchbutton */
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.wider-lines {
+    /* bei längeren Texten größerer Abstand zwischen den einzelnen Zeilen: Verbesserung der Lesbarkeit */
+    /* important, damit diese Einstellung nicht überschrieben werden kann */
+    line-height: 1.8 !important;
+}
+
+.container {
+    /* damit Elemente nebeneinander stehen */
+    display: inline-flex;
+
+    /* festgelegte Breite, aber keine festgelegte Höhe, weil die Länge von Texten variiert */
+    width: 85%;
+
+    /* Zentrierung: (100 - Breite) / 2, weil 100 = Breite + 2x (x = linke bzw. rechte Lücke) */
+    margin-left: calc((100% - 85%) / 2);
+
+    /* damit Container nicht am Footer kleben */
+    margin-bottom: 32px;
+}
+
+.container .info-box {
+    /* 3 gleich breite Infoboxen mit kleinem Abstand */
+    width: 32%;
+    margin-right: 2%;
+}
+
+.container .info-box:last-of-type {
+    /* letzte Infobox hat kein margin-right, damit die Symmetrie erhalten bleibt */
+    margin-right: 0;
+}
+
+.info-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.info-box img {
+    margin: 16px 16px auto 16px;
+    width: 90%;
+}
+
+.shadow-container {
+    /* Schatten und Rand, damit man die Box sieht*/
+    box-shadow: 0 0 5px;
+    border: 1px solid;
+}
+
+.info-box-text {
+    /* Texte in Infoboxen sollen Abstand vom Rand haben */
+    width: 90%;
+
+    /* größerer Abstand zwischen den einzelnen Zeilen */
+    line-height: 1.25;
+}
+
+.info-box-text a {
+    text-decoration: underline;
+
+    /* übernimmt die Farbe normales Textes */
+    color: currentColor;
+}
+
+.info-box-text a:hover {
+    color: var(--accent-color);
+}
+
+.info-box-text a:active {
+    /* Klick-Effekt: Link wird heller */
+    filter: brightness(150%);
+}
+
+.more-info-button {
+    text-decoration: none;
+    background-color: var(--text-color);
+    padding: 10px 16px;
+    color: var(--bg-color);
+
+    /* Vergrößerung des Abstandes zwischen den einzelnen Buchstaben */
+    letter-spacing: 1.2px;
+
+    /* größtmöglicher Abstand von Text */
+    margin-top: auto;
+
+    /* ein bisschen Abstand, damit der Button nicht am Rand klebt */
+    margin-bottom: 16px;
+}
+
+.more-info-button:hover {
+    /* Button wird länger */
+    padding: 10px 32px;
+}
+
+.more-info-button:active {
+    /* Textfarbe ändert sich während Klicken */
+    transition: none;
+    color: var(--accent-color);
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+/* GENERELLE EINSTELLUNGEN - ENDE */
+
+/* EINSTELLUNGEN FÜR HEADER - BEGINN */
+
+header {
+    /* damit Elemente nebeneinander stehen*/
+    display: inline-flex;
+
+    /* vertikale Zentrierung der Elemente */
+    align-items: center;
+}
+
+.logo {
+    /* Logo im Header/Navbar */
+    width: 12vh;
+    height: 12vh;
+    margin: 1.5vh;
+}
+
+.search {
+    /* Höhe = 6% der Bildschirmhöhe des Nutzers (view height) */
+    height: 6vh;
+
+    /* Breite = 25% der Bildschirmbreite des Nutzers (view width) */
+    width: 25vw;
+
+    /* vertikale Zentrierung der Elemente (Textbox, Suchbutton) und Abrundung der Ecken */
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.search:focus-within {
+    /* Search Bar wächst bei Fokus */
+    width: 30vw;
+}
+
+.search input[type="text"] {
+    /* gleiche Höhe wie Button */
+    height: 100%;
+
+    width: 85%;
+
+    /* ein bisschen Lücke auf der linken Seite, damit der eingegebene Text nicht am Rand klebt: optisch anprechender */
+    padding: 0 0 0 10px;
+}
+
+.search input[type="text"]:hover,
+.search input[type="text"]:focus-within {
+    /* Hover-Effekt: Dunkleres Erscheinen */
+    border-right: var(--accent-color) 2px solid;
+}
+
+.search button[type="submit"] {
+    /* gleiche Höhe wie Textbox */
+    height: 100%;
+
+    /* Breite des Buttons = 100% - Breite der Textbox (85%) */
+    width: calc(100% - 85%);
+
+    /* Eindruck eines Buttons entsteht, wenn die Maus sich ändert */
+    cursor: pointer;
+}
+
+.search button[type="submit"]:hover {
+    /* Hover-Effekt: Dunkleres Erscheinen */
+    filter: brightness(93%);
+}
+
+/* :active ist der Moment, wenn der Button gepresst wird (solange der Nutzer Maus Links Klick betätigt) */
+.search button[type="submit"]:active {
+    /* Schneller Klick-Effekt: Noch dunkleres Erscheinen */
+    transition: none;
+    filter: brightness(80%);
+}
+
+.search button[type="submit"] img:hover {
+    /* Rotierende Lupe Animation bei Hover auf Button */
+    /* s. Animation "rotation" oben in GENERELLE EINSTELLUNGEN */
+    animation: rotation 800ms linear;
+}
+
+header ul {
+    /* damit die Links nebeneinander angezeigt werden */
+    display: inline-flex;
+
+    /* größtmöglicher Abstand vom Searchbar */
+    margin-left: auto;
+
+    /* keine Aufzählungspunkte/-zeichen */
+    list-style: none;
+}
+
+header ul li {
+    /* Abstand zwischen den einzelnen Links */
+    margin-right: 35px;
+}
+
+header ul li a {
+    text-decoration: none;
+    color: var(--bg-color);
+
+    /* Abstand zwischen Buchstaben vergrößert */
+    letter-spacing: 1.2px;
+}
+
+header ul li a:hover {
+    /* Link Hover-Effekt: Text wird dunkler und unterstrichen */
+    border-bottom: 1px solid;
+    filter: brightness(90%);
+}
+
+header ul li a:active {
+    /* Link Klick-Effekt: Text wird noch dunkler */
+    border-bottom: 1px solid;
+    filter: brightness(80%);
+}
+
+/* EINSTELLUNGEN FÜR HEADER - ENDE */
+
+/* EINSTELLUNGEN FÜR FOOTER - BEGINN */
+
+footer {
+    display: flex;
+
+    /* Unterseitenlinks und Copyrightschrift untereinander */
+    flex-direction: column;
+}
+
+footer ul {
+    /* damit die Links nebeneinander angezeigt werden */
+    display: inline-flex;
+
+    /* keine Aufzählungspunkte/-zeichen */
+    list-style: none;
+
+    /* Wenn margin als auto eingestellt wird, wird das Element mittig platziert. */
+    margin: auto;
+}
+
+footer ul li {
+    /* Abstand zwischen den einzelnen Links */
+    margin-right: 100px;
+}
+
+footer ul li:last-of-type {
+    /* Der letzte Link, hat kein margin right, weil danach ja kein Link kommt und eine Lücke überflüssig ist: die Lücke würde nur die Symmetrie stören */
+    margin-right: 0;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: var(--bg-color);
+
+    /* Abstand zwischen Buchstaben vergrößert */
+    letter-spacing: 1.2px;
+}
+
+footer ul li a:hover {
+    /* Link Hover-Effekt: Text wird dunkler und unterstrichen */
+    border-bottom: 1px solid;
+    filter: brightness(90%);
+}
+
+footer ul li a:active {
+    /* Link Klick-Effekt: Text wird noch dunkler */
+    border-bottom: 1px solid;
+    filter: brightness(80%);
+}
+
+footer div {
+    /* inline-flex, damit span, img, span nebeneinander positioniert werden */
+    display: inline-flex;
+
+    /* leichte Verdunklung des Hintergrunds, damit es herausschaut */
+    background-color: rgba(0, 0, 0, 0.1);
+
+    /* oben und unten keine Lücken, links und rechts auto Lücken, damit Element mittig positioniert wird */
+    margin: 0 auto 0 auto;
+
+    /* damit der Hintergrund nicht am Rand des Textes klebt: optisch ansprechender */
+    padding: 8px 60px 8px 60px;
+
+    /* 5px Kantenabrundung: Die Abrundung gehört zu unseren Wiedererkennungsmerkmalen, weil sie häufig genutzt wird und immer 5px beträgt */
+    border-radius: 5px 5px 0 0;
+}
+
+footer div span {
+    /* 6px, damit Texte auf dem gleichen vertikalen Mittepunkt sind wie das Bild */
+    margin: 6px;
+
+    /* Die ganz unteren Texte sind nicht markierbar: einfach weil es drip hat */
+    user-select: none;
+}
+
+footer div img {
+    /* damit img nicht riesig ist */
+    height: 32px;
+}
+
+footer div span:first-of-type {
+    /* Adana-entdecken.de ist weiter weg vom Bild */
+    margin-right: 100px;
+}
+
+footer div span:last-of-type {
+    /* Andere Schriftart, die optisch zu "Designen und Programmieren" passt */
+    font-family: monospace;
+
+    /* größere Buchstaben */
+    font-size: 20px;
+
+    /* größerer Abstand zwischen den einzelnen Buchstaben */
+    letter-spacing: 1.5px;
+
+    /* geringe Entfernung vom Bild */
+    margin-left: 20px;
+}
+
+/* EINSTELLUNGEN FÜR FOOTER - ENDE */
+
+/* EINSTELLUNGEN FÜR HOMEPAGE - BEGINN */
+
+.welcome-text {
+    font-size: 75px;
+    font-family: cursive;
+    font-weight: 500;
+    letter-spacing: 10px;
+    color: var(--accent-color);
+    text-align: center;
+    margin-left: 20%;
+
+    /* Man kann den Text nicht markieren/kopieren */
+    user-select: none;
+}
+
+/* EINSTELLUNGEN FÜR SLIDESHOW - BEGINN */
+
+.special-container {
+    position: relative;
+
+    /* damit Elemente nebeneinander stehen */
+    display: inline-flex;
+
+    width: 100%;
+    height: 400px;
+}
+
+.slideshow {
+    width: 800px;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    margin-left: 20px;
+}
+
+.navigation {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.bar {
+    width: 35px;
+    height: 10px;
+    border: 2px solid #fff;
+    margin: 5px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.bar:hover {
+    background: #fff;
+}
+
+input[name="r"] {
+    position: absolute;
+    visibility: hidden;
+}
+
+.slides {
+    width: 500%;
+    height: 100%;
+    display: flex;
+}
+
+.slide {
+    width: 20%;
+    transition: 0.6s;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+}
+
+#r1:checked ~ .s1 {
+    margin-left: 0;
+}
+
+#r2:checked ~ .s1 {
+    margin-left: -20%;
+}
+
+#r3:checked ~ .s1 {
+    margin-left: -40%;
+}
+
+#r4:checked ~ .s1 {
+    margin-left: -60%;
+}
+
+#r5:checked ~ .s1 {
+    margin-left: -80%;
+}
+
+/* EINSTELLUNGEN FÜR SLIDESHOW - ENDE */
+
+.special-container .info-box {
+    /* Kebab Infobox Positionierung: oben keine Lücke, rechts 20px Lücke, unten keine Lücke, links größtmöglicher Abstand von Slideshow */
+    margin: 0 20px 0 auto;
+
+    /* Von der ganzen Bildschirmbreite werden Slideshow und margins abgezogen (900px + insg. 60px) */
+    width: calc(100% - 860px);
+}
+
+/* EINSTELLUNGEN FÜR HOMEPAGE - ENDE */
+
+/* EINSTELLUNGEN FÜR GESCHICHTE SEITE - BEGINN */
+
+.story-box {
+    /* relativ für story-box und img */
+    position: relative;
+    top: 0;
+    left: 0;
+
+    /* festgelegte Breite, damit das Bild auf allen Geräten gleich erscheint */
+    width: 750px;
+
+    /* Zentrierung */
+    margin-left: calc((100% - 750px) / 2);
+}
+
+.story-box img {
+    /* relativ für story-box und img */
+    position: relative;
+    top: 0;
+    left: 0;
+
+    /* img soll die Breite füllen zu 100% */
+    width: 100%;
+
+    /* damit das Bild nicht unnötig lang wird */
+    height: 1400px;
+}
+
+.story-box .info-box-text {
+    /* absolute, wenn man Text AUF das Bild platzieren möchte */
+    position: absolute;
+
+    /* bildspezifische Anpassungen der Position der Texte: das Bild hat Rand deswegen */
+    top: 100px;
+    left: 20px;
+
+    /* festgelegte, vom Bild abhängige Breite, damit der Text genau auf das Bild passt (wenn man ein anderes Bild wählt, muss man hier Änderungen vornehmen.) */
+    width: 520px;
+
+    /* Zentrierung der Texte auf dem Bild */
+    margin-left: calc((100% - 520px) / 2);
+}
+
+/* EINSTELLUNGEN FÜR GESCHICHTE SEITE - ENDE */
+
+/* EINSTELLUNGEN FÜR GESCHICHTE ADANA ONLINE SEITE - BEGINN */
+
+.food-table-box {
+    /* relativ für food-table-box und img */
+    position: relative;
+    top: 0;
+    left: 0;
+
+    /* festgelegte Breite, damit das Bild auf allen Geräten gleich erscheint */
+    width: 900px;
+
+    height: 1200px;
+
+    /* damit der Text lesbarer wird: Der Hintergrund erschwert das Lesen deswegenn */
+    font-weight: bold;
+}
+
+.food-table {
+    /* relativ für food-table-box und img */
+    position: relative;
+    top: 0;
+    left: 0;
+
+    /* important, damit vorherige Einstellungen überschrieben werden */
+    /* img soll die Breite der Box füllen zu 100% */
+    width: 100% !important;
+
+    /* important, damit vorherige Einstellungen überschrieben werden */
+    /* keine Abstände zwischen Bild und Rand: Bild soll 100% füllen */
+    margin: 0 !important;
+
+    height: 1100px;
+}
+
+.food-table-box ol {
+    /* absolute, wenn man Inhalt AUF das Bild platzieren möchte */
+    position: absolute;
+
+    /* bildspezifische Anpassungen der Position der Texte: das Bild hat Rand deswegen */
+    top: 40px;
+    left: 0;
+
+    /* festgelegte, vom Bild abhängige Breite, damit der Text genau auf das Bild passt (wenn man ein anderes Bild wählt, muss man hier Änderungen vornehmen.) */
+    width: 90%;
+}
+
+.resizable-meat {
+    width: 150px;
+    height: 150px;
+
+    /* dem Nutzer Änderung der Größe erlauben */
+    resize: horizontal;
+    overflow: hidden;
+
+    /* damit der Nutzer nicht übertreiben darf */
+    max-width: 800px;
+
+    /* Eckenabrundung, damit es wie Kebab aussieht */
+    border-radius: 30px;
+}
+
+.resizable-meat img {
+    /* img soll div füllen */
+    width: 100%;
+    height: 100%;
+
+    /* kein Abstand vom Text auf der linken Seite: optisch besser */
+    margin: 0;
+}
+
+.resizable-adana {
+    width: 150px;
+    height: 150px;
+
+    /* dem Nutzer Änderung der Größe erlauben */
+    resize: both;
+    overflow: hidden;
+
+    /* damit der Nutzer nicht übertreiben darf */
+    max-width: 300px;
+    max-height: 300px;
+
+    /* Eckenabrundung, damit es wie Kebab aussieht */
+    border-radius: 30px;
+}
+
+.resizable-adana img {
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    /* Eckenabrundung, damit es wie Kebab aussieht */
+    border-radius: 30px;
+}
+
+.best-adana {
+    width: 300px;
+}
+
+.best-adana img {
+    width: 100%;
+    border-radius: 30px;
+    margin: 0;
+}
+
+/* EINSTELLUNGEN FÜR GESCHICHTE ADANA ONLINE SEITE - ENDE */
